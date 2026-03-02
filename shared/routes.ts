@@ -4,7 +4,6 @@ import {
   insertNewsletterSubscriberSchema,
   insertRegistrationSchema,
   insertVolunteerSchema,
-
 } from "./schema.ts";
 
 
