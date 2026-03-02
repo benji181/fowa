@@ -1,9 +1,7 @@
 import * as React from "react"
+import type {ToastProps} from "@radix-ui/react-toast";
+import type {ToastActionElement} from "../components/ui/toast.tsx";
 
-import type {
-  ToastActionElement,
-  ToastProps,
-} from "../../../not-backed-up-downloads/Water-Arts-Celebration/Water-Arts-Celebration/client/src/components/ui/toast"
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000
@@ -15,6 +13,7 @@ type ToasterToast = ToastProps & {
   action?: ToastActionElement
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
   UPDATE_TOAST: "UPDATE_TOAST",

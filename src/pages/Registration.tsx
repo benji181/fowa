@@ -11,7 +11,7 @@ import {insertRegistrationSchema} from "../../shared/schema.ts";
 type RegForm = z.infer<typeof insertRegistrationSchema>;
 
 export default function Registration() {
-  const { mutate, isPending } = useRegisterGuest();
+  const {isPending } = useRegisterGuest();
   const [successCode, setSuccessCode] = useState<string | null>(null);
 
   const form = useForm<RegForm>({

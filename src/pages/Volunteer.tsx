@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRegisterVolunteer } from "../hooks/use-api";
 import { Heart } from "lucide-react";
-import type {insertVolunteerSchema} from "../../shared/schema.ts";
+import {insertVolunteerSchema} from "../../shared/schema.ts";
 import {PageLayout} from "../components/layout/PageLayout.tsx";
 import {PageHeader} from "../components/ui/PageHeader.tsx";
 

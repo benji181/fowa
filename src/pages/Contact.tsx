@@ -5,7 +5,7 @@ import { useSubmitContact } from "../hooks/use-api";
 import { MapPin, Phone, Mail, Send } from "lucide-react";
 import {PageLayout} from "../components/layout/PageLayout.tsx";
 import {PageHeader} from "../components/ui/PageHeader.tsx";
-import type {insertContactSchema} from "../../shared/schema.ts";
+import {insertContactSchema} from "../../shared/schema.ts";
 
 type ContactForm = z.infer<typeof insertContactSchema>;
 

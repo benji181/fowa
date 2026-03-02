@@ -3,9 +3,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useCreateDonation } from "../hooks/use-api";
 import { HeartHandshake } from "lucide-react";
-import type {insertDonationSchema} from "../../shared/schema.ts";
 import {PageLayout} from "../components/layout/PageLayout.tsx";
 import {PageHeader} from "../components/ui/PageHeader.tsx";
+import {insertDonationSchema} from "../../shared/schema.ts";
+import {toast} from "../hooks/use-toast.ts";
 
 type DonationForm = z.infer<typeof insertDonationSchema>;
 
@@ -17,15 +18,18 @@ export default function Donation() {
     defaultValues: { donorName: "", email: "", amount: 100, message: "" }
   });
 
-  const onSubmit = (data: DonationForm) => {
+// Change the onSubmit function signature
+  const onSubmit = (data: any) => {
     mutate(data, {
       onSuccess: () => {
-        form.reset({ amount: 100 });
-        // In a real app, redirect to Stripe checkout here
-      }
+        toast({
+          title: "Thank you for your donation!",
+          description: "You will receive a confirmation email shortly.",
+        });
+        form.reset();
+      },
     });
   };
-
   const presetAmounts = [50, 100, 250, 500, 1000];
 
   return (

@@ -1,12 +1,13 @@
 import { z } from "zod";
-import { 
+import {
+  insertContactSchema, insertDonationSchema,
   insertNewsletterSubscriberSchema,
   insertRegistrationSchema,
   insertVolunteerSchema,
-  insertContactSchema,
-  insertDonationSchema,
-  merchandise
-} from "./schema";
+
+} from "./schema.ts";
+
+
 
 export const errorSchemas = {
   validation: z.object({
@@ -74,7 +75,7 @@ export const api = {
       method: "GET" as const,
       path: "/api/merchandise" as const,
       responses: {
-        200: z.array(z.custom<typeof merchandise.$inferSelect>()),
+       // 200: z.array(z.custom<typeof merchandise.$inferSelect>()),
       },
     },
   },
