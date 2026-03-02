@@ -6,8 +6,6 @@ import {
   insertVolunteerSchema,
 } from "./schema.ts";
 
-
-
 export const errorSchemas = {
   validation: z.object({
     message: z.string(),
@@ -39,9 +37,9 @@ export const api = {
       path: "/api/registration" as const,
       input: insertRegistrationSchema,
       responses: {
-        201: z.object({ 
+        201: z.object({
           message: z.string(),
-          uniqueCode: z.string() 
+          uniqueCode: z.string()
         }),
         400: errorSchemas.validation,
       },
@@ -74,7 +72,16 @@ export const api = {
       method: "GET" as const,
       path: "/api/merchandise" as const,
       responses: {
-       // 200: z.array(z.custom<typeof merchandise.$inferSelect>()),
+        200: z.array(z.object({  // Define a proper schema for merchandise
+          id: z.number(),
+          name: z.string(),
+          description: z.string(),
+          price: z.number(),
+          imageUrl: z.string(),
+          category: z.string(),
+          inStock: z.boolean(),
+        })),
+        400: errorSchemas.validation,
       },
     },
   },
@@ -84,9 +91,9 @@ export const api = {
       path: "/api/donations" as const,
       input: insertDonationSchema,
       responses: {
-        201: z.object({ 
+        201: z.object({
           message: z.string(),
-          id: z.number() 
+          id: z.number()
         }),
         400: errorSchemas.validation,
       },
@@ -111,4 +118,6 @@ export type RegistrationInput = z.infer<typeof api.registration.create.input>;
 export type VolunteerInput = z.infer<typeof api.volunteers.register.input>;
 export type ContactInput = z.infer<typeof api.contacts.submit.input>;
 export type DonationInput = z.infer<typeof api.donations.create.input>;
-export type MerchandiseListResponse = z.infer<typeof api.merchandise.list.responses[200]>;
+
+// Define this only if you need it, otherwise comment it out
+// export type MerchandiseListResponse = z.infer<typeof api.merchandise.list.responses[200]>;
